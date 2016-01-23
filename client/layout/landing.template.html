@@ -1,0 +1,7 @@
+<template name="landing">
+    {{#if Template.subscriptionsReady}}
+      	{{>Template.dynamic template=content}}
+    {{else}}
+    	{{>preloader}}
+    {{/if}}
+</template>
