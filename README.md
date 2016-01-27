@@ -9,8 +9,7 @@ Tugas OS ini menggunakan platform [nodeJS]((https://nodejs.org/en/)) dengan fram
     <ul>
       <li>For Windows : Download [here](https://install.meteor.com/windows) </li>
       <li>For Linux   : 
-      ```bash
-      curl https://install.meteor.com/ | sh
+`<addr>`curl https://install.meteor.com/ | sh
       ```</li>
     </ul>
   </li>
