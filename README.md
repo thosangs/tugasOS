@@ -8,9 +8,7 @@ Tugas OS ini menggunakan platform [nodeJS]((https://nodejs.org/en/)) dengan fram
   <li>Download and Install Meteor :
     <ul>
       <li>For Windows : Download [here](https://install.meteor.com/windows) </li>
-      <li>For Linux   : 
-`<addr>`curl https://install.meteor.com/ | sh
-      ```</li>
+      <li>For Linux   : <addr>curl https://install.meteor.com/ | sh</addr></li>
     </ul>
   </li>
   <li>Fork and Contributing : check[this](https://help.github.com/articles/fork-a-repo/) out</li>
