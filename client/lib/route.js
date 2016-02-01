@@ -7,3 +7,10 @@ FlowRouter.route('/', {
       FlowRouter.go('vote');}
   }
 });
+
+FlowRouter.route('/terminal', {
+  name:'terminal',
+  action() {
+    BlazeLayout.render("landing", {content: "terminal"});
+	}
+});

@@ -7,13 +7,13 @@
   //   }
   // });
 
-Meteor.autorun(function () {
-    var stat;
-    if (Meteor.status().status === "connected") {
-        stat = 'lime'}
-    else if (Meteor.status().status === "connecting") {
-        stat = 'yellow'}
-    else {
-        stat = 'red';}
-    Session.setPersistent('status',stat);
-});
+  Template.terminal.events({
+    'click #button': function () {
+      console.log("clicking");
+      var cmd = $("input#command").val();
+      console.log("command", cmd);
+      var replyId = Meteor.call('command', cmd);
+      Session.set('replyId', replyId);
+      console.log(replyId);
+    }
+  });
