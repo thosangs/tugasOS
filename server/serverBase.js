@@ -5,7 +5,7 @@ Meteor.publish('output',function(){
 });
 
 Meteor.methods({
-  'command' : function(line) {
+  'InsertCommand' : function(line) {
     console.log("In command method", line);
     Fiber = Npm.require('fibers');
     exec(line, function(error, stdout, stderr) {
@@ -17,6 +17,5 @@ Meteor.methods({
           command: line
         }); 
       }).run();
-    });
-  }
+    });}
 });

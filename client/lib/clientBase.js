@@ -12,7 +12,7 @@ Template.terminal.events({
     console.log("clicking");
     var cmd = $("input#command").val();
     console.log("command", cmd);
-    Meteor.call('command', cmd);
+    Meteor.call('InsertCommand', cmd);
   }
 });
 
