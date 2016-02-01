@@ -1,4 +1,26 @@
 <template name="terminal">
 	<input type="text" id="command">
   	<input type="button" id="button" value="Click" />
+
+  	{{#if Template.subscriptionsReady}}
+  	<table class="striped centered">
+        <thead>
+          <tr>
+              <th data-field="Date">Date</th>
+              <th data-field="Command">Command</th>
+              <th data-field="Output">Output</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {{#each Replies}}
+          <tr>
+            <td>{{date}}</td>
+            <td>{{command}}</td>
+            <td>{{message}}</td>
+          </tr>
+         {{/each}}
+        </tbody>
+      </table>
+      {{/if}}
 </template>

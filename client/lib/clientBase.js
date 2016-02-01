@@ -7,13 +7,22 @@
   //   }
   // });
 
-  Template.terminal.events({
-    'click #button': function () {
-      console.log("clicking");
-      var cmd = $("input#command").val();
-      console.log("command", cmd);
-      var replyId = Meteor.call('command', cmd);
-      Session.set('replyId', replyId);
-      console.log(replyId);
-    }
-  });
+Template.terminal.events({
+  'click #button': function () {
+    console.log("clicking");
+    var cmd = $("input#command").val();
+    console.log("command", cmd);
+    Meteor.call('command', cmd);
+  }
+});
+
+Template.terminal.onCreated(function() {
+  var self = this;
+  self.subscribe("output");
+});
+
+Template.terminal.helpers({
+  Replies: function () {
+      return Replies.find({});
+  }
+});
