@@ -32,7 +32,6 @@ Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
     var code = t.find("#some-id").value;
-    alert(code);
     console.log("command", code);
     Meteor.call('command', code);
     console.log("udah manggil meteor");
@@ -46,6 +45,9 @@ Template.editor.onCreated(function() {
 });
 
 Template.editor.helpers({
+    Replies: function () {
+        return Replies.find({});
+    },
 
     "editorOptions": function() {
         return {

@@ -37,58 +37,31 @@
     </div>
 </div>
 
-<div id = "outputcode1">
-    
-    <h2 class="center header text_h2"> Output of <span class="span_h2"> Code 1</span> 
-    </h2> 
-
-    {{#if Template.subscriptionsReady}}
-    {{#each Replies}}
-    
-    <h5>Date: </h5>
-    <p>{{date}}</p>
-
-    <h5>Output: </h5>
-    <p>{{message}}</p>
-    {{/each}}
-    {{/if}}
-    <br>
-    <br>
-    <br>
-</div>
 
 <div id = "outputcode2">
-<h2 class="center header text_h2"> Output of <span class="span_h2"> Code 2</span> </h2> 
-                {{#if Template.subscriptionsReady}}
-                <table class="striped centered">
-                    <thead>
-                      <tr>
-                          <th data-field="Date">Date</th>
-                          <th data-field="Command">Command</th>
-                          <th data-field="Output">Output</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                    {{#each Replies}}
-                      <tr>
-                        <td>{{date}}</td>
-                        <td>{{command}}</td>
-                        <td>{{message}}</td>
-                      </tr>
-                     {{/each}}
-                    </tbody>
-                  </table>
-                  {{/if}}
+    
 </div>
 <!--Intro and service-->
 <div id="intro" class="section scrollspy">
     <div class="container">
-        <div class="row">
-            <div  class="col s12">
-                
-            </div>
-        </div>
+        <h2 class="center header text_h2"> Outputs of <span class="span_h2"> Code </span> </h2> 
+                {{#if Template.subscriptionsReady}}
+                <table class = "striped centered">
+                    {{#each Replies}}
+                        <tr>
+                            <td><strong>Data: </strong></td> 
+                            <td>{{date}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Output:</strong></td> 
+                            <td>{{message}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><hr style = "height:1px; color:#2196F3"></td> 
+                        </tr>
+                    {{/each}}
+                </table>
+                {{/if}}
     </div>
 </div>
 
