@@ -1,4 +1,4 @@
-<template name="homepage">
+<template name="editor">
 <!--Navigation-->
  <div class="navbar-fixed">
     <nav id="nav_f" class="default_color" role="navigation">
@@ -25,151 +25,46 @@
     </nav>
 </div>
 
-<!--Hero-->
+
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <h1 class="text_h center header cd-headline letters type">
-            <span>I Love</span> 
-            <span class="cd-words-wrapper waiting">
-                <b class="is-visible">creating</b>
-                <b>designing</b>
-                <b>developing</b>
-            </span>
-        </h1>
+        <h2 class = "header text_bm1" style = "color = white">Code  <span class ="span_h2m1"> Editor</span></h2>
+        {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+        <br>
+        <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit">Submit Code
+        </button>
+
     </div>
 </div>
 
+
+<div id = "outputcode2">
+    
+</div>
 <!--Intro and service-->
 <div id="intro" class="section scrollspy">
     <div class="container">
-        <div class="row">
-            <div  class="col s12">
-                <h2 class="center header text_h2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="span_h2"> Phasellus  </span>vestibulum lorem risus, nec suscipit lorem <span class="span_h2"> laoreet quis.</span> </h2>
-            </div>
-
-            <div  class="col s12 m4 l4">
-                <div class="center promo promo-example">
-                    <i class="mdi-image-flash-on"></i>
-                    <h5 class="promo-caption">Speeds up development</h5>
-                    <p class="light center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="center promo promo-example">
-                    <i class="mdi-social-group"></i>
-                    <h5 class="promo-caption">User Experience Focused</h5>
-                    <p class="light center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="center promo promo-example">
-                    <i class="mdi-hardware-desktop-windows"></i>
-                    <h5 class="promo-caption">Fully responsive</h5>
-                    <p class="light center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                </div>
-            </div>
-        </div>
+        <h2 class="center header text_h2"> Outputs of <span class="span_h2"> Code </span> </h2> 
+                {{#if Template.subscriptionsReady}}
+                <table class = "striped centered">
+                    {{#each Replies}}
+                        <tr>
+                            <td><strong>Data: </strong></td> 
+                            <td>{{date}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Output:</strong></td> 
+                            <td>{{message}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan=2><hr style = "height:1px; color:#2196F3"></td> 
+                        </tr>
+                    {{/each}}
+                </table>
+                {{/if}}
     </div>
 </div>
 
-<!--Work-->
-<div class="section scrollspy" id="work">
-    <div class="container">
-        <h2 class="header text_b">Work </h2>
-        <div class="row">
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project1.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project2.jpeg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project3.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project4.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project5.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project6.jpeg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--Parallax-->
 <div class="parallax-container">
@@ -177,6 +72,7 @@
 </div>
 
 <!--Team-->
+<!--
 <div class="section scrollspy" id="team">
     <div class="container">
         <h2 class="header text_b"> Our Team </h2>
@@ -187,10 +83,10 @@
                         <img class="activator" src="img/avatar1.png">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Thosan G. S.<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">12.7402@stis.ac.id</a></em></small></span>
+                        <span class="card-title activator grey-text text-darken-4">Flash <br/>
+                            <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/thosan.seceng">
+                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
@@ -212,11 +108,11 @@
                         <img class="activator" src="img/avatar2.png">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Anisa Septiani<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">12.7024@stis.ac.id</a></em></small>
+                        <span class="card-title activator grey-text text-darken-4">Cat Woman<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
                         </span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/anisa.septiani">
+                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
@@ -239,10 +135,10 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">
-                            M. Arif Maulana<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">12.7231@stis.ac.id</a></em></small></span>
+                            Capt. America <br/>
+                            <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/muh.arif.maulana">
+                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
@@ -264,10 +160,10 @@
                         <img class="activator" src="img/avatar4.png">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Mukhlis<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">12.7272@stis.ac.id</a></em></small></span>
+                        <span class="card-title activator grey-text text-darken-4">Robin<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/mukehelis">
+                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
@@ -289,11 +185,11 @@
                         <img class="activator" src="img/avatar2.png">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Khairanisa H.<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">12.7210@stis.ac.id</a></em></small>
+                        <span class="card-title activator grey-text text-darken-4">Cat Woman 2<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Designer 2</a></em></small>
                         </span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/khairanisa.haque">
+                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                             <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
@@ -312,6 +208,7 @@
         </div>
     </div>
 </div>
+-->
 
 <!--Footer-->
 <footer id="contact" class="page-footer default_color scrollspy">

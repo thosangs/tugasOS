@@ -49,8 +49,10 @@
 .text_h2 {font-weight: 100;margin-bottom: 4%; line-height: 4.5rem;}
 
 .span_h2 {font-weight: 300;color: #2196F3;}
+.span_h2m1 {font-weight: 400; color: #FFFFFF; }
 
 .text_b{color: #2196F3;}
+.text_bm1{font-weight: 100; color: #FFFFFF;}
 
 .in{font-weight: 400 !important; font-style: normal !important;}
 
