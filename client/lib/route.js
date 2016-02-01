@@ -14,3 +14,10 @@ FlowRouter.route('/terminal', {
     BlazeLayout.render("landing", {content: "terminal"});
 	}
 });
+
+FlowRouter.route('/editor', {
+  name:'editor',
+  action() {
+    BlazeLayout.render("landing", {content: "editor"});
+  }
+});
