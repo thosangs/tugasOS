@@ -29,13 +29,23 @@ Template.terminal.helpers({
 
 Template.editor.events({
 
-  "click #button" : function(e, t){
+  "click #button1" : function(e, t){
     console.log("clicking");
-    var code = t.find("#some-id").value;
+    var code = t.find("#cmTerminal").value;
     console.log("command", code);
     Meteor.call('command', code);
     console.log("udah manggil meteor");
-  }
+
+  },
+
+  "click #button" : function(e, t){
+    console.log("clicking");
+    var code = t.find("#cmCodeEditor").value;
+    console.log("command", code);
+    Meteor.call('command', code);
+    console.log("udah manggil meteor");
+  },
+
 
 });
 
@@ -49,12 +59,33 @@ Template.editor.helpers({
         return Replies.find({});
     },
 
-    "editorOptions": function() {
+    "optionsTerminal": function() {
         return {
-            lineNumbers: true,
-            mode: "javascript"
+            lineNumbers: false,
+            mode: "javascript",
+            lineWrapping: true
         }
     },
+
+    "optionsCodeEditor": function() {
+        return {
+            lineNumbers: true,
+            mode: "javascript",
+            theme: "paraiso-light",
+            lineWrapping: true
+        }
+    },
+
+    "optionsOutput": function() {
+        return {
+            lineNumbers: false,
+            mode: "javascript",
+            theme: "paraiso-light",
+            lineWrapping: true,
+            readOnly: true
+        }
+    },
+
 
     "editorCode": function() {
         return "Code to show in editor";
