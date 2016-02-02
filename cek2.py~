@@ -1,2 +1,0 @@
-execfile('cek1.py')
-print a
