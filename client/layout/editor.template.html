@@ -26,25 +26,43 @@
 </div>
 
 
+
+
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
+<!-- <<<<<<< HEAD
         <h2 class = "header text_bm1" style = "color = white">Code  <span class ="span_h2m1"> Editor</span></h2>
         {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="code"}}
-        <br>
-        <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit">Submit Code
-        </button>
+======= -->
+        <h2 class = "header text_bm1" style = "color = white">Your <span class ="span_h2m1">Terminal</span></h2>    
+        {{> CodeMirror id="cmTerminal" name="nameTerminal" options=optionsTerminal code=editorCodeTerminal reactiveVar="varNameTerminal"}}
 
+<!-- >>>>>>> 37354c2db83310e2e01cff716d171b5da146df64 -->
+        <br>
+        <button id = "button1" class="btn waves-effect waves-light red darken-1" type="submit">Submit Command
+        </button>
     </div>
 </div>
 
+<div id = "codeeditor">
+    <div class="container">
+        <h2 class="center header text_h2">Code <span class="span_h2"> Editor</span> </h2> 
 
-<div id = "outputcode2">
-    
+        {{> CodeMirror id="cmCodeEditor" name="nameCodeEditor" options=optionsCodeEditor code=editorCode reactiveVar="varNameCodeEditor"}}
+
+        <br>
+        <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit">Submit Code
+        </button>
+    </div>
 </div>
+
 <!--Intro and service-->
 <div id="intro" class="section scrollspy">
     <div class="container">
-        <h2 class="center header text_h2"> Outputs of <span class="span_h2"> Code </span> </h2> 
+    <h2 class="center header text_h2"> Outputs of <span class="span_h2"> Code </span> </h2> 
+    {{> CodeMirror id="cmOutput" name="nameOutput" options=optionsOutput code=editorCodeOutput reactiveVar="varNameOutput"}}
+
+        
                 {{#if Template.subscriptionsReady}}
                 <table class = "striped centered">
                     {{#each Replies}}
@@ -64,6 +82,7 @@
                 {{/if}}
     </div>
 </div>
+
 
 
 <!--Parallax-->

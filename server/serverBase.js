@@ -1,7 +1,7 @@
 exec = Npm.require('child_process').exec;
 
 Meteor.publish('output',function(){
-  return Replies.find({},{sort: {date: -1}});
+  return Replies.find({});
 });
 
 Meteor.methods({
@@ -15,7 +15,7 @@ Meteor.methods({
         Replies.insert({
           message: stdout ? stdout : stderr, 
           date: new Date(),
-          command: line
+          command: lineWrapping
         }); 
       }).run();
     });},
