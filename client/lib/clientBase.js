@@ -45,7 +45,7 @@ Template.editor.onCreated(function() {
 
 Template.editor.helpers({
     Replies: function () {
-        return Replies.find({});
+        return Replies.find({},{sort: {date: -1}});
     },
 
     "editorOptions": function() {

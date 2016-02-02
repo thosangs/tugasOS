@@ -41,7 +41,7 @@ id-map@1.0.4
 izzilab:shelljs@0.0.3
 jquery@1.11.4
 kadira:blaze-layout@2.3.0
-kadira:flow-router@2.10.0
+kadira:flow-router@2.10.1
 lai:collection-extensions@0.1.4
 launch-screen@1.0.4
 livedata@1.0.15
@@ -49,6 +49,8 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.10
 meteor-base@1.0.1
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.5.0
 meteortoys:allthings@2.3.1
 meteortoys:authenticate@2.1.0
 meteortoys:autopub@2.1.0
@@ -73,6 +75,7 @@ mongo-id@1.0.1
 msavin:jetsetter@1.5.2
 msavin:mongol@1.6.2
 npm-bcrypt@0.7.8_2
+npm-container@1.2.0
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4

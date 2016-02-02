@@ -1,15 +1,15 @@
 exec = Npm.require('child_process').exec;
 
 Meteor.publish('output',function(){
-  return Replies.find({});
+  return Replies.find({},{sort: {date: -1}});
 });
 
 Meteor.methods({
   'InsertCommand' : function(line) {
     console.log("In command method", line);
     Fiber = Npm.require('fibers');
-    file = save-text-to-file
-    exec("python "+file, function(error, stdout, stderr) {
+    //file = save-text-to-file
+    exec(line, function(error, stdout, stderr) {
       console.log('Command Method', error, stdout, stderr);
       Fiber(function() {
         Replies.insert({
@@ -20,7 +20,7 @@ Meteor.methods({
       }).run();
     });},
     'CekPython' : function(){
-      var zerorpc = Npm.require("zerorpc");
+      var zerorpc = Meteor.npmRequire("zerorpc");
 
       var client = new zerorpc.Client();
       client.connect("tcp://127.0.0.1:4242");
