@@ -21,3 +21,11 @@ FlowRouter.route('/editor', {
     BlazeLayout.render("landing", {content: "editor"});
   }
 });
+
+FlowRouter.route('/python', {
+  name:'python',
+  action() {
+    BlazeLayout.render("landing", {content: "editor"}); 
+    Meteor.call('CekPython');
+  }
+});

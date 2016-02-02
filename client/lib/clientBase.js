@@ -33,8 +33,7 @@ Template.editor.events({
     console.log("clicking");
     var code = t.find("#some-id").value;
     console.log("command", code);
-    Meteor.call('command', code);
-    console.log("udah manggil meteor");
+    Meteor.call('InsertCommand', code);
   }
 
 });
@@ -52,7 +51,7 @@ Template.editor.helpers({
     "editorOptions": function() {
         return {
             lineNumbers: true,
-            mode: "javascript"
+            mode: "python"
         }
     },
 
@@ -61,7 +60,7 @@ Template.editor.helpers({
     },
 
     "getEditorText": function(){
-      return Session.get("varName");
+      return Session.get("code");
     }
 
 });
