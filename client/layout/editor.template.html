@@ -69,8 +69,15 @@
     <!--
     {{> CodeMirror id="cmOutput" name="nameOutput" options=optionsOutput code=editorCodeOutput reactiveVar="varNameOutput"}}
     -->
-    <textarea id="terminaleditor"></textarea>
-        
+    <textarea id="terminaleditor">
+<!--     {{#if Template.subscriptionsReady}}
+        {{#each Replies}}
+            {{date}} $: {{command}} \n
+            {{date}} $: {{message}} \n
+        {{/each}}
+        CEK
+    {{/if}} -->
+    </textarea>
                 {{#if Template.subscriptionsReady}}
                 <table class = "striped centered">
                     {{#each Replies}}

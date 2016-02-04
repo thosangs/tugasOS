@@ -45,24 +45,7 @@ Template.editor.onCreated(function() {
 
 Template.editor.helpers({
     Replies: function () {
-        return Replies.find({},{sort: {date: -1}});
-    },
-
-    "optionsTerminal": function() {
-        return {
-            lineNumbers: false,
-            mode: "python",
-            lineWrapping: true
-        }
-    },
-
-    "optionsCodeEditor": function() {
-        return {
-            lineNumbers: true,
-            mode: "python",
-            theme: "paraiso-light",
-            lineWrapping: true
-        }
+        return Replies.find({});
     },
 
     "optionsOutput": function() {
@@ -73,15 +56,6 @@ Template.editor.helpers({
             lineWrapping: true,
             readOnly: true
        }
-    },
-
-
-    "editorCode": function() {
-        return "Code to show in editor";
-    },
-
-    "getEditorText": function(){
-      return Session.get("code");
     }
 
 });
