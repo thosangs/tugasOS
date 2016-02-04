@@ -1,4 +1,5 @@
 exec = Npm.require('child_process').exec;
+//mukhlis
 
 Meteor.publish('output',function(){
   return Replies.find({});
@@ -28,5 +29,11 @@ Meteor.methods({
       client.invoke("hello", "Jambas!", function(error, res, more) {
           console.log(res);
       });
+    },
+
+    "writefiletoPath" : function(path,text){
+       var writer = Meteor.npmPackage('writefile');
+       writer(path,text);
+       console.log("fileWrited to" + path);
     }
 });
