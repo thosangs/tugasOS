@@ -31,9 +31,17 @@ Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
     var code = t.editor.getValue();
+    var path = Meteor.rootPath + "file.txt";
+    console.log(path);
+    path = "/home/mukhlis/tugasos/public/coucou.txt";
+    console.log(path);
+    Meteor.call("writefiletoPath",path,code);
+
     console.log("command", code);
     Meteor.call('InsertCommand', code);
     //var editing = CodeMirror.fromTextArea(t.find("#terminaleditor"));
+
+    
     t.editing.replaceRange("foo\n", {line: Infinity});
   }
 });
