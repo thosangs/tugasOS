@@ -18,16 +18,14 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 #autopublish             # Publish all data to the clients (for prototyping)
 #insecure                # Allow all DB writes from clients (for prototyping)
-izzilab:shelljs
-accounts-password
 
 kadira:flow-router
 kadira:blaze-layout
 meteortoys:allthings
-check
-u2622:persistent-session
-fortawesome:fontawesome
+
 perak:codemirror
 meteorhacks:npm
-
 npm-container
+amplify
+useraccounts:materialize 
+accounts-password

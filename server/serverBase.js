@@ -15,7 +15,7 @@ Meteor.methods({
         Replies.insert({
           message: stdout ? stdout : stderr, 
           date: new Date(),
-          command: lineWrapping
+          command: line
         }); 
       }).run();
     });},

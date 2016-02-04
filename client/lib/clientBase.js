@@ -30,9 +30,11 @@ Template.terminal.helpers({
 Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
-    var code = t.find("#cmCodeEditor").value;
+    var code = t.editor.getValue();
     console.log("command", code);
     Meteor.call('InsertCommand', code);
+    //var editing = CodeMirror.fromTextArea(t.find("#terminaleditor"));
+    t.editing.replaceRange("foo\n", {line: Infinity});
   }
 });
 
@@ -82,4 +84,23 @@ Template.editor.helpers({
       return Session.get("code");
     }
 
+});
+
+Template.editor.onRendered( function() {
+  this.editor = CodeMirror.fromTextArea( this.find( "#editor" ), {
+    lineNumbers: true,
+    fixedGutter: false,
+    mode: "markdown",
+    lineWrapping: true,
+    cursorHeight: 0.85
+  });
+  this.editing = CodeMirror.fromTextArea( this.find( "#terminaleditor" ), {
+    lineNumbers: false,
+    fixedGutter: false,
+    mode: "markdown",
+    lineWrapping: true,
+    theme: "paraiso-light",
+    cursorHeight: 0.85,
+    readOnly: true
+  });
 });
