@@ -28,16 +28,6 @@ Template.terminal.helpers({
 });
 
 Template.editor.events({
-  
-  "click #button1" : function(e, t){
-    console.log("clicking");
-    var code = t.find("#cmTerminal").value;
-    console.log("command", code);
-    Meteor.call('command', code);
-    console.log("udah manggil meteor");
-
-  },
-
   "click #button" : function(e, t){
     console.log("clicking");
     var code = t.find("#cmCodeEditor").value;
