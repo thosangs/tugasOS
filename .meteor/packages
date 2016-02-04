@@ -29,3 +29,5 @@ npm-container
 amplify
 useraccounts:materialize 
 accounts-password
+rolljee:writefile
+ostrio:meteor-root
