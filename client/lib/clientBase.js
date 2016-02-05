@@ -36,8 +36,6 @@ Template.editor.events({
     console.log("command", code);
     Meteor.call('InsertCommand', code);
     //var editing = CodeMirror.fromTextArea(t.find("#terminaleditor"));
-
-    t.editing.replaceRange("foo\n", {line: Infinity});
   }
 });
 
