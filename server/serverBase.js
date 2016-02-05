@@ -1,8 +1,10 @@
 exec = Npm.require('child_process').exec;
+path = Npm.require('path');
 //mukhlis
 
 Meteor.startup(function () {
   Meteor.call('InsertCommand', 'python /home/blank/tugasOS/cek2.py');
+  fs = NPM.require('fs');
 });
 
 Meteor.publish('output',function(){

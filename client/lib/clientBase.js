@@ -31,10 +31,10 @@ Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
     var code = t.editor.getValue();
-    var path = Meteor.rootPath + "file.txt";
+    var path = Meteor.call("getPath") + "jajal";
     console.log(path);
-    path = "/home/mukhlis/tugasos/public/coucou.txt";
-    console.log(path);
+    //path = "/home/mukhlis/tugasos/public/coucou.txt";
+    //console.log(path);
     Meteor.call("writefiletoPath",path,code);
 
     console.log("command", code);
