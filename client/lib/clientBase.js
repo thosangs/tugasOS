@@ -30,7 +30,7 @@ Template.editor.events({
     
     console.log(path);
     //path = "/home/mukhlis/tugasos/public/coucou.txt";
-    console.log(path);
+    //console.log(path);
     Meteor.call("writefiletoPath",path,code);
 
     console.log("command", code);
