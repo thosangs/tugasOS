@@ -52,9 +52,6 @@
         <h2 class="header text_bm1" style ="color = white">Code <span class="span_h2"> Editor</span> </h2> 
 
         <textarea id="editor"></textarea>
-        <!--
-        {{> CodeMirror id="cmCodeEditor" name="nameCodeEditor" options=optionsCodeEditor code=editorCode reactiveVar="varNameCodeEditor"}}
-        -->
         <br>
         <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit">Submit Code
         </button>
@@ -69,9 +66,9 @@
     <!--
     {{> CodeMirror id="cmOutput" name="nameOutput" options=optionsOutput code=editorCodeOutput reactiveVar="varNameOutput"}}
     -->
-    <textarea id="terminaleditor"></textarea>
-        
-                {{#if Template.subscriptionsReady}}
+    <textarea id="terminaleditor">
+    </textarea>
+                <!-- {{#if Template.subscriptionsReady}}
                 <table class = "striped centered">
                     {{#each Replies}}
                         <tr>
@@ -87,7 +84,7 @@
                         </tr>
                     {{/each}}
                 </table>
-                {{/if}}
+                {{/if}} -->
     </div>
 </div>
 
