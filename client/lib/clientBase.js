@@ -26,7 +26,7 @@ Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
     var code = t.editor.getValue();
-    var path = Meteor.rootPath + "file.txt";
+    var path = PATH + "/public/cekMimin/file.txt";
     
     console.log(path);
     //path = "/home/mukhlis/tugasos/public/coucou.txt";
