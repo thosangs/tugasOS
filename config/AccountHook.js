@@ -9,6 +9,11 @@ mySubmitFunc = function(error, state){
   }
 };
 
-AccountsTemplates.configure({
-    onSubmitHook: mySubmitFunc
-});
+myLogoutFunc = function(error, state){
+  if (!error) {
+    FlowRouter.go('userhome');
+  }
+  else{
+    console.log(error);
+  }
+};

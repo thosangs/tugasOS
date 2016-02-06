@@ -10,14 +10,16 @@
                     <li><a href="#work">Work</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a class='dropdown-button btn' onclick="$('#modal1').openModal();">Login</a></li>
+                    <li>{{> atNavButton}}</li>
+<!--                     <li><a class='dropdown-button btn' onclick="$('#modal1').openModal();">Login</a></li> -->
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     <li><a href="#intro">Service</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a class='dropdown-button btn' onclick="$('#modal1').openModal();">Login</a></li>
+                    <li>{{> atNavButton}}</li>
+<!--                     <li><a class='dropdown-button btn' onclick="$('#modal1').openModal();">Login</a></li> -->
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
@@ -58,7 +60,7 @@
     </div>
 </footer>
 
-<div class="row">
+<!-- <div class="row">
     <div id="modal1" class="modal col s12 m6 offset-m3">
         <div class="modal-content">
         {{> atForm}}
@@ -67,5 +69,5 @@
           <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
-</div>
+</div> -->
 </template>

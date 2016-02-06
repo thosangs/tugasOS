@@ -33,7 +33,7 @@ AccountsTemplates.configure({
     redirectTimeout: 4000,
 
     // Hooks
-    // onLogoutHook: myLogoutFunc,
+    onLogoutHook: myLogoutFunc,
     onSubmitHook: mySubmitFunc,
     // preSignUpHook: myPreSubmitFunc,
     // postSignUpHook: myPostSubmitFunc,
@@ -53,4 +53,14 @@ AccountsTemplates.configure({
           signUp: "Daftar"
       },
     },
+});
+
+AccountsTemplates.addField({
+    _id: 'username',
+    type: 'text',
+    placeholder: {
+        signUp: "Minimal 6 Karakter"
+    },
+    required: true,
+    minLength: 6
 });
