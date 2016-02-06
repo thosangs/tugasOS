@@ -10,9 +10,8 @@ Template.editor.events({
 
     console.log("command", code);
     Meteor.call('InsertCommand', code);
-
     t.editing.replaceRange("foo\n", {line: Infinity});
-  },
+  }
 });
 
 Template.editor.onCreated(function() {
@@ -42,9 +41,7 @@ Template.editor.onRendered( function() {
     fixedGutter: false,
     mode: "markdown",
     lineWrapping: true,
-    cursorHeight: 0.85
-  });
-
+    cursorHeight: 0.85});
   editing = CodeMirror.fromTextArea( this.find( "#terminaleditor" ), {
     lineNumbers: false,
     fixedGutter: false,
@@ -52,8 +49,7 @@ Template.editor.onRendered( function() {
     lineWrapping: true,
     theme: "monokai",
     cursorHeight: 0.85,
-    readOnly: true
-  });
+    readOnly: true});
 
   function getHour(d){
       var curr_hour = d.getHours();
@@ -86,8 +82,8 @@ Template.editor.onRendered( function() {
         d+"$: "+post.command+'\n'+
         post.message+'\n', 
         {line: Infinity});
-    }
-  });
+    }});
+  
   this.editor = editor;
   this.editing = editing;
 });
