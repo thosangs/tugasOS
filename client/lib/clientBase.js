@@ -38,7 +38,7 @@ Template.editor.events({
     //var editing = CodeMirror.fromTextArea(t.find("#terminaleditor"));
 
     t.editing.replaceRange("foo\n", {line: Infinity});
-  }
+  },
 });
 
 Template.editor.onCreated(function() {
@@ -115,7 +115,6 @@ Template.editor.onRendered( function() {
         {line: Infinity});
     }
   });
-
   this.editor = editor;
   this.editing = editing;
 });

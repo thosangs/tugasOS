@@ -1,3 +1,4 @@
+T9n.setLanguage('id');
 AccountsTemplates.configure({
     // Behavior
     confirmPassword: true,
@@ -10,7 +11,7 @@ AccountsTemplates.configure({
 
     // Appearance
     showAddRemoveServices: false,
-    showForgotPasswordLink: false,
+    showForgotPasswordLink: true,
     showLabels: true,
     showPlaceholders: true,
     showResendVerificationEmailLink: false,
@@ -24,30 +25,32 @@ AccountsTemplates.configure({
     showValidating: true,
 
     // Privacy Policy and Terms of Use
-    privacyUrl: 'privacy',
-    termsUrl: 'terms-of-use',
+    // privacyUrl: 'privacy',
+    // termsUrl: 'terms-of-use',
 
     // Redirects
-    homeRoutePath: '/terminal',
+    homeRoutePath: '/python',
     redirectTimeout: 4000,
 
     // Hooks
     // onLogoutHook: myLogoutFunc,
-    // onSubmitHook: mySubmitFunc,
+    onSubmitHook: mySubmitFunc,
     // preSignUpHook: myPreSubmitFunc,
     // postSignUpHook: myPostSubmitFunc,
 
     // Texts
     texts: {
       button: {
-          signUp: "Register Now!"
+          signUp: "Daftar!"
       },
       socialSignUp: "Register",
       socialIcons: {
           "meteor-developer": "fa fa-rocket"
       },
       title: {
-          forgotPwd: "Recover Your Password"
+          forgotPwd: "Recover Your Password",
+          signIn: "Login",
+          signUp: "Daftar"
       },
     },
 });

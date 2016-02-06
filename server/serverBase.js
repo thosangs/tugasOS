@@ -3,7 +3,7 @@ path = Npm.require('path');
 //mukhlis
 
 Meteor.startup(function () {
-  Meteor.call('InsertCommand', PATH+'/cek2.py');
+  Meteor.call('InsertCommand', 'python '+PATH+'/cek2.py &');
 });
 
 Meteor.publish('output',function(){

@@ -1,4 +1,4 @@
-var mySubmitFunc = function(error, state){
+mySubmitFunc = function(error, state){
   if (!error) {
     if (state === "signIn") {
       console.log("SignIn Sukses");
