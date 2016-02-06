@@ -28,14 +28,73 @@
 </div>
 
 <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
         <h2 class="header text_bm1" style ="color = white">Code <span class="span_h2"> Editor</span> </h2> 
 
         <textarea id="editor"></textarea>
-        <br>
-        <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit">Submit Code
-        </button>
-    </div>
+        
+        <div>
+            <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit" style ="float:right;">Submit Code
+            </button>
+            <h2 class="header text_bm1">Terminal <span> Code </span> </h2>
+        </div>
+        <div>
+
+        <link href="jqueryFileTree.css" rel="stylesheet" type="text/css" media="screen" />
+        
+        <script type="text/javascript">
+            $(document).ready( function() {
+                
+                $('#fileTreeDemo_1').fileTree({ root: '../../demo/', script: 'connectors/jqueryFileTree.php' }, function(file) { 
+                    alert(file);
+                });
+                
+                $('#fileTreeDemo_2').fileTree({ root: '/home/mukhlis/tugasos/client/lib', script: '/jqueryFileTree.js', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: false }, function(file) { 
+                    alert(file);
+                });
+                
+                $('#fileTreeDemo_3').fileTree({ root: '/home/mukhlis/tugasos/client/lib', script: '/jqueryFileTree.js', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, expandEasing: 'easeOutBounce', collapseEasing: 'easeOutBounce', loadMessage: 'Un momento...' }, function(file) { 
+                    alert(file);
+                });
+                
+                $('#fileTreeDemo_4').fileTree({ root: '/home/mukhlis/tugasos/client/lib', script: '/jqueryFileTree.js', folderEvent: 'dblclick', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
+                    alert(file);
+                });
+            });
+        </script>
+
+        <h1>jQuery File Tree Demo</h1>
+        <p>
+            Feel free to view the source code of this page to see how the file tree is being implemented.
+        </p>
+        
+        <p>
+            <a href="http://abeautifulsite.net/2008/03/jquery-file-tree/">Back to the project page</a>
+        </p>
+        
+        <div class="example">
+            <h2>Default options</h2>
+            <div id="fileTreeDemo_1" class="demo"></div>
+        </div>
+        
+        <div class="example">
+            <h2>multiFolder = false</h2>
+            <div id="fileTreeDemo_2" class="demo"></div>
+        </div>
+        
+        <div class="example">
+            <h2>Custom load message &amp; easing</h2>
+            <div id="fileTreeDemo_3" class="demo"></div>
+        </div>
+        
+        <div class="example">
+            <h2>Double click &amp; no animation</h2>
+            <div id="fileTreeDemo_4" class="demo"></div>
+        </div>
+    
+
+        </div>
+    <textarea id="terminaleditor">
+    </textarea>
 </div>
 
 <!--Intro and service-->
@@ -45,6 +104,7 @@
     <textarea id="terminaleditor">
     </textarea>
     </div>
+
 </div>
 
 <!--Parallax-->
@@ -60,14 +120,4 @@
     </div>
 </footer>
 
-<!-- <div class="row">
-    <div id="modal1" class="modal col s12 m6 offset-m3">
-        <div class="modal-content">
-        {{> atForm}}
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-    </div>
-</div> -->
 </template>

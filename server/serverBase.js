@@ -1,5 +1,4 @@
 exec = Npm.require('child_process').exec;
-path = Npm.require('path');
 //mukhlis
 
 Meteor.startup(function () {
