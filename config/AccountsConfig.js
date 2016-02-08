@@ -49,18 +49,8 @@ AccountsTemplates.configure({
       },
       title: {
           forgotPwd: "Recover Your Password",
-          signIn: "Login",
-          signUp: "Daftar"
+          signIn: "SIGN IN",
+          signUp: "DAFTAR"
       },
     },
-});
-
-AccountsTemplates.addField({
-    _id: 'username',
-    type: 'text',
-    placeholder: {
-        signUp: "Minimal 6 Karakter"
-    },
-    required: true,
-    minLength: 6
 });

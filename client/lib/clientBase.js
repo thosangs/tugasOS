@@ -2,15 +2,22 @@
 Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
-    var code = t.editor.getValue();
-    var path = PATH + "/public/cekMimin/file.txt";
+    var codeType = $('.tab').find('.active').attr('href') == '#editorPython' ? 'py':'R';
+    var code = "";
+    if ($('.tab').find('.active').attr('href') == '#editorPython') {
+      code = t.editorPy.getValue();
+    }
+    else{
+      code = t.editorR.getValue();
+    }
+    
+    var path = PATH + "/public/code/"+ userId + "." + codeType;
     
     console.log(path);
     Meteor.call("writefiletoPath",path,code);
 
     console.log("command", code);
     Meteor.call('InsertCommand', code);
-    t.editing.replaceRange("foo\n", {line: Infinity});
   }
 });
 
@@ -19,33 +26,25 @@ Template.editor.onCreated(function() {
   self.subscribe("output");
 });
 
-Template.editor.helpers({
-    Replies: function () {
-        return Replies.find({});
-    },
-
-    "optionsOutput": function() {
-        return {
-            lineNumbers: false,
-            mode: "python",
-            theme: "paraiso-light",
-            lineWrapping: true,
-            readOnly: true
-       }
-    }
-});
-
 Template.editor.onRendered( function() {
-  editor = CodeMirror.fromTextArea( this.find( "#editor" ), {
+  editorPy = CodeMirror.fromTextArea( this.find( "#editorPy" ), {
     lineNumbers: true,
     fixedGutter: false,
-    mode: "markdown",
+    mode: "python",
     lineWrapping: true,
+    theme: "monokai",
+    cursorHeight: 0.85});
+  editorR = CodeMirror.fromTextArea( this.find( "#editorR" ), {
+    lineNumbers: true,
+    fixedGutter: false,
+    mode: "R",
+    lineWrapping: true,
+    theme: "monokai",
     cursorHeight: 0.85});
   editing = CodeMirror.fromTextArea( this.find( "#terminaleditor" ), {
     lineNumbers: false,
     fixedGutter: false,
-    mode: "bash",
+    mode: "perl",
     lineWrapping: true,
     theme: "monokai",
     cursorHeight: 0.85,
@@ -71,10 +70,10 @@ Template.editor.onRendered( function() {
          }
 
       var curr_min = d.getMinutes();
-      return (curr_hour + ":" + curr_min + " " + a_p);
-  };
+      return (curr_hour + ":" + curr_min + " " + a_p);};
 
   var query = Replies.find({});
+
   query.observeChanges({
     added: function (id,post) {
       d = getHour(new Date(post.date));
@@ -84,6 +83,13 @@ Template.editor.onRendered( function() {
         {line: Infinity});
     }});
   
-  this.editor = editor;
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+
+  editing.setCursor(editing.lineCount(), 0);
+
+  this.editorPy = editorPy;
+  this.editorR = editorR;
   this.editing = editing;
 });

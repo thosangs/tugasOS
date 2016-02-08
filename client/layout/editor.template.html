@@ -1,123 +1,53 @@
 <template name="editor">
-<!--Navigation-->
- <div class="navbar-fixed">
-    <nav id="nav_f" class="default_color" role="navigation">
-        <div class="container">
-            <div class="nav-wrapper">
-            <a href="#" id="logo-container" class="brand-logo">OS Kelompok 3</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#intro">Service</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li>{{> atNavButton}}</li>
-<!--                     <li><a class='dropdown-button btn' onclick="$('#modal1').openModal();">Login</a></li> -->
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#intro">Service</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li>{{> atNavButton}}</li>
-<!--                     <li><a class='dropdown-button btn' onclick="$('#modal1').openModal();">Login</a></li> -->
-                </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    <!--Navigation-->
+     <div class="navbar">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                <a href="#" id="logo-container" class="brand-logo">Hi, {{currentUser.username}}</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>{{> atNavButton}}</li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li>{{> atNavButton}}</li>
+                    </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
             </div>
+        </nav>
+    </div>
+
+    <div class="section no-pad-bot" id="index-banner">
+        <h4 class="header text_bm1" style ="color = white">Code <span class="span_h2"> Editor</span> </h4> 
+        
+        <div class="row">
+            <div class="col s12 m12">
+                <ul class="tabs">
+                    <li class="tab col s6 m6"><a href="#editorPython">logo Python</a></li>
+                    <li class="tab col m6 s6"><a href="#editorRR">Logo R</a></li>
+                </ul>
+            </div>
+
+            <div id="editorPython" class="col s12"> <textarea id="editorPy"></textarea> </div>
+            <div id="editorRR" class="col s12"><textarea id="editorR"></textarea></div>
         </div>
-    </nav>
-</div>
-
-<div class="section no-pad-bot" id="index-banner">
-        <h2 class="header text_bm1" style ="color = white">Code <span class="span_h2"> Editor</span> </h2> 
-
-        <textarea id="editor"></textarea>
         
         <div>
             <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit" style ="float:right;">Submit Code
             </button>
-            <h2 class="header text_bm1">Terminal <span> Code </span> </h2>
+            <h4 class="header text_bm1">Terminal <span> Code </span> </h4>
         </div>
-        <div>
 
-        <link href="jqueryFileTree.css" rel="stylesheet" type="text/css" media="screen" />
-        
-        <script type="text/javascript">
-            $(document).ready( function() {
-                
-                $('#fileTreeDemo_1').fileTree({ root: '../../demo/', script: 'connectors/jqueryFileTree.php' }, function(file) { 
-                    alert(file);
-                });
-                
-                $('#fileTreeDemo_2').fileTree({ root: '/home/mukhlis/tugasos/client/lib', script: '/jqueryFileTree.js', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: false }, function(file) { 
-                    alert(file);
-                });
-                
-                $('#fileTreeDemo_3').fileTree({ root: '/home/mukhlis/tugasos/client/lib', script: '/jqueryFileTree.js', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, expandEasing: 'easeOutBounce', collapseEasing: 'easeOutBounce', loadMessage: 'Un momento...' }, function(file) { 
-                    alert(file);
-                });
-                
-                $('#fileTreeDemo_4').fileTree({ root: '/home/mukhlis/tugasos/client/lib', script: '/jqueryFileTree.js', folderEvent: 'dblclick', expandSpeed: 1, collapseSpeed: 1 }, function(file) { 
-                    alert(file);
-                });
-            });
-        </script>
-
-        <h1>jQuery File Tree Demo</h1>
-        <p>
-            Feel free to view the source code of this page to see how the file tree is being implemented.
-        </p>
-        
-        <p>
-            <a href="http://abeautifulsite.net/2008/03/jquery-file-tree/">Back to the project page</a>
-        </p>
-        
-        <div class="example">
-            <h2>Default options</h2>
-            <div id="fileTreeDemo_1" class="demo"></div>
-        </div>
-        
-        <div class="example">
-            <h2>multiFolder = false</h2>
-            <div id="fileTreeDemo_2" class="demo"></div>
-        </div>
-        
-        <div class="example">
-            <h2>Custom load message &amp; easing</h2>
-            <div id="fileTreeDemo_3" class="demo"></div>
-        </div>
-        
-        <div class="example">
-            <h2>Double click &amp; no animation</h2>
-            <div id="fileTreeDemo_4" class="demo"></div>
-        </div>
-    
-
-        </div>
-    <textarea id="terminaleditor">
-    </textarea>
-</div>
-
-<!--Intro and service-->
-<div id="intro" class="section scrollspy">
-    <div class="container">
-    <h2 class="center header text_h2">Terminal <span class="span_h2"> Code </span> </h2> 
-    <textarea id="terminaleditor">
-    </textarea>
+        <textarea id="terminaleditor">
+        </textarea>
     </div>
 
-</div>
-
-<!--Parallax-->
-<div class="parallax-container">
-    <div class="parallax"><img src="img/parallax1.png"></div>
-</div>
-
-<footer id="contact" class="page-footer default_color scrollspy">
-    <div class="footer-copyright default_color">
-        <div class="container">
-            Made by <a class="white-text" href="http://joashpereira.com">Joash Pereira</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
+    <footer id="contact" class="page-footer default_color scrollspy">
+        <div class="footer-copyright default_color">
+            <div class="container">
+                Made by <a class="white-text" href="http://joashpereira.com">Joash Pereira</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 </template>
