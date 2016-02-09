@@ -8,6 +8,14 @@ FlowRouter.route('/', {
 FlowRouter.route('/UserHome', {
   name:'userhome',
   action() {
-    BlazeLayout.render("landing", {content: "verifyLogin"});
+    BlazeLayout.render("landing", {content: "kopas"});
   }
 });
+
+FlowRouter.notFound = {
+    // Subscriptions registered here don't have Fast Render support.
+    action: function() {
+//namanya pastiin lagi 
+		BlazeLayout.render("landing", {content: "404notFound"});
+    }
+};
