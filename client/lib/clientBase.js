@@ -77,7 +77,7 @@ Template.editor.onRendered( function() {
     added: function (id,post) {
       d = getHour(new Date(post.date));
       editing.replaceRange(
-        d+"$: "+post.command+'\n'+
+        d+" "+Meteor.user().username+"$: "+post.command+'\n'+
         post.message+'\n', 
         {line: Infinity});
     }});

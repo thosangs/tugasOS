@@ -45,19 +45,28 @@ Meteor.methods({
       var zerorpc = Meteor.npmRequire("zerorpc");
       var port = Meteor.users.findOne(this.userId).port;
       var func = type == 'py' ? 'pycom' : 'rcom' ;
-      var respon;
+      var respon = "";
+      var UserID = Meteor.userId();
 
       client.connect("tcp://127.0.0.1:"+port);
       client.invoke(func, codePath, function(error, res, more) {
-          respon = res;
-          console.log(func+"\n"+codePath+"\n"+respon)
-      });
+          if(error) {
+              console.log(error);
+          } else {
+              respon = respon + res;
+          }
 
-      Replies.insert({
-        message: respon, 
-        date: new Date(),
-        user: this.userId,
-        command: "Running "+func+" "+codePath
+          if(!more) {
+            Fiber = Npm.require('fibers');
+            Fiber(function() {
+              Replies.insert({
+                message: respon, 
+                date: new Date(),
+                user: UserID,
+                command: "Running "+func
+              });
+            }).run();
+          }
       });
     }
   });
