@@ -1,12 +1,10 @@
 exec = Npm.require('child_process').exec;
 //mukhlis
-
-Meteor.startup(function () {
-  Meteor.call('InsertCommand', 'python '+PATH+'/cek2.py &');
-});
+var zerorpc = Meteor.npmRequire("zerorpc");
+var client = new zerorpc.Client();
 
 Meteor.publish('output',function(){
-  return Replies.find({});
+  return Replies.find({_id:this.userId});
 });
 
 Meteor.methods({
@@ -24,21 +22,41 @@ Meteor.methods({
           command: line
         }); 
       }).run();
-    });},
-    'CekPython' : function(){
-      var zerorpc = Meteor.npmRequire("zerorpc");
-
-      var client = new zerorpc.Client();
-      client.connect("tcp://127.0.0.1:4242");
-
-      client.invoke("hello", "Jambas!", function(error, res, more) {
-          console.log(res);
-      });
-    },
+    });
+  },
 
     "writefiletoPath" : function(path,text){
        var writer = Meteor.npmPackage('writefile');
        writer(path,text);
        console.log("fileWrited to" + path);
+    },
+
+    'RunEnv' : function(port){
+      Meteor.call('InsertCommand', 'python '+PATH+'/user/'+port+'.py &');
+      client.connect("tcp://127.0.0.1:"+port);
+    },
+
+    'MakeEnv' : function(port){
+      makePy(port);
+    },
+
+    'Run' : function(codePath,type){
+      var zerorpc = Meteor.npmRequire("zerorpc");
+      var port = Meteor.users.findOne(this.userId).port;
+      console.log('port : '+port);
+      var func = type == 'py' ? 'pycom' : 'rcom' ;
+      client.connect("tcp://127.0.0.1:"+port);
+      client.invoke(func, codePath, function(error, res, more) {
+          console.log(res);
+          
+          Fiber = Npm.require('fibers');
+          Fiber(function() {
+            Replies.insert({
+              message: res, 
+              date: new Date(),
+              user: this.userId,
+              command: 'Running '+func+' at '+date});
+          });
+      });
     }
-});
+  });

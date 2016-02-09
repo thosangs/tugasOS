@@ -2,7 +2,9 @@
 Template.editor.events({
   "click #button" : function(e, t){
     console.log("clicking");
+    
     var codeType = $('.tab').find('.active').attr('href') == '#editorPython' ? 'py':'R';
+    
     var code = "";
     if ($('.tab').find('.active').attr('href') == '#editorPython') {
       code = t.editorPy.getValue();
@@ -11,13 +13,10 @@ Template.editor.events({
       code = t.editorR.getValue();
     }
     
-    var path = PATH + "/public/code/"+ userId + "." + codeType;
-    
-    console.log(path);
-    Meteor.call("writefiletoPath",path,code);
+    var path = PATH + "/user/"+ Meteor.userId()+"." + codeType;
 
-    console.log("command", code);
-    Meteor.call('InsertCommand', code);
+    Meteor.call("writefiletoPath",path,code);
+    Meteor.call("Run",path,codeType);
   }
 });
 
@@ -37,7 +36,7 @@ Template.editor.onRendered( function() {
   editorR = CodeMirror.fromTextArea( this.find( "#editorR" ), {
     lineNumbers: true,
     fixedGutter: false,
-    mode: "R",
+    mode: "r",
     lineWrapping: true,
     theme: "monokai",
     cursorHeight: 0.85});

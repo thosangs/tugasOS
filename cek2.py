@@ -1,12 +1,29 @@
 import zerorpc
 import rpy2.robjects as robjects
+import sys
+import StringIO
+import contextlib
 
-class HelloRPC(object):
-    def hello(self, name):
-    	r = robjects.r
-    	d = r.source("/home/blank/tugasOS/cek2.R")
-    	f = r['f']
-        return "HelloD, %s %s" % (name ,d[0])
+r = robjects.r
+
+@contextlib.contextmanager
+def stdoutIO(stdout=None):
+    old = sys.stdout
+    if stdout is None:
+        stdout = StringIO.StringIO()
+    sys.stdout = stdout
+    yield stdout
+    sys.stdout = old
+
+class HelloRPC(object):	
+    def pycom(self, path):
+    	with stdoutIO() as s:
+		    execfile(path)
+		return s.getvalue()
+
+    def rcom(self, path):
+    	out = r.source(path)
+        return out[0]
 
 s = zerorpc.Server(HelloRPC())
 s.bind("tcp://0.0.0.0:4242")

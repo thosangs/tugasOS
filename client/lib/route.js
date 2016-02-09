@@ -8,7 +8,6 @@ FlowRouter.route('/', {
 FlowRouter.route('/UserHome', {
   name:'userhome',
   action() {
-    Meteor.call('CekPython');
     BlazeLayout.render("landing", {content: "verifyLogin"});
   }
 });

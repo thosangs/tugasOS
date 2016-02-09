@@ -102,6 +102,8 @@ templating-tools@1.0.0
 tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4
+universe:modules@0.6.8
+universe:modules-compiler@1.0.5
 url@1.0.5
 useraccounts:core@1.13.1
 useraccounts:materialize@1.13.1

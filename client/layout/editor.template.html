@@ -1,5 +1,11 @@
 <template name="editor">
     <!--Navigation-->
+    <style type="text/css">
+        .active {
+            background-color: #e3f2fd
+        }
+    </style>
+    
      <div class="navbar">
         <nav id="nav_f" class="default_color" role="navigation">
             <div class="container">
@@ -21,10 +27,11 @@
         <h4 class="header text_bm1" style ="color = white">Code <span class="span_h2"> Editor</span> </h4> 
         
         <div class="row">
-            <div class="col s12 m12">
-                <ul class="tabs">
-                    <li class="tab col s6 m6"><a href="#editorPython">logo Python</a></li>
-                    <li class="tab col m6 s6"><a href="#editorRR">Logo R</a></li>
+            <div class="valign-wrapper col s12 m12">
+                <ul class="tabs valign">
+                    <li class="tab col s6 m6"><a href="#editorPython"><img height="42" src="/img/LogoPy.png"></a></li>
+
+                    <li class="tab col m6 s6"><a href="#editorRR"><img src="/img/Rlogo-1.png" height="42"></a></li>
                 </ul>
             </div>
 
@@ -33,7 +40,7 @@
         </div>
         
         <div>
-            <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit" style ="float:right;">Submit Code
+            <button id = "button" class="btn waves-effect waves-light red darken-1" type="submit" style ="float:right;">Run
             </button>
             <h4 class="header text_bm1">Terminal <span> Code </span> </h4>
         </div>

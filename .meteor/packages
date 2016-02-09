@@ -31,3 +31,4 @@ useraccounts:materialize
 accounts-password
 rolljee:writefile
 ostrio:meteor-root
+universe:modules
