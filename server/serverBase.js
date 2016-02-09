@@ -4,7 +4,7 @@ var zerorpc = Meteor.npmRequire("zerorpc");
 var client = new zerorpc.Client();
 
 Meteor.publish('output',function(){
-  return Replies.find({_id:this.userId});
+  return Replies.find({user:this.userId});
 });
 
 Meteor.methods({
@@ -37,26 +37,27 @@ Meteor.methods({
     },
 
     'MakeEnv' : function(port){
+      Meteor.users.update({_id:this.userId}, {$set: {port: port}});
       makePy(port);
     },
 
     'Run' : function(codePath,type){
       var zerorpc = Meteor.npmRequire("zerorpc");
       var port = Meteor.users.findOne(this.userId).port;
-      console.log('port : '+port);
       var func = type == 'py' ? 'pycom' : 'rcom' ;
+      var respon;
+
       client.connect("tcp://127.0.0.1:"+port);
       client.invoke(func, codePath, function(error, res, more) {
-          console.log(res);
-          
-          Fiber = Npm.require('fibers');
-          Fiber(function() {
-            Replies.insert({
-              message: res, 
-              date: new Date(),
-              user: this.userId,
-              command: 'Running '+func+' at '+date});
-          });
+          respon = res;
+          console.log(func+"\n"+codePath+"\n"+respon)
+      });
+
+      Replies.insert({
+        message: respon, 
+        date: new Date(),
+        user: this.userId,
+        command: "Running "+func+" "+codePath
       });
     }
   });

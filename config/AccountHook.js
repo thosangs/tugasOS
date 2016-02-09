@@ -13,7 +13,6 @@ mySubmitFunc = function(error, state){
     }
     if (state === "signUp") {
       var port = genRandomPort();
-      Meteor.users.update({_id:this.userId}, {$set: {port: port}});
       Meteor.call('MakeEnv', port,function(err, data) {
         if (err)
           console.log(err);
