@@ -49,44 +49,36 @@ Template.editor.onRendered( function() {
     cursorHeight: 0.85,
     readOnly: true});
 
+  //filePath = "/user/"+this.userId;
+  //if (fileexist(filePath+".py"))
+  //  editorPy.setValue(file);
+  //if (fileexist(filePath+".R"))
+  //  editorR.setValue(file("/user/"+this.userId+".R"));
+
   function getHour(d){
       var curr_hour = d.getHours();
-      if (curr_hour < 12)
-         {
-         a_p = "AM";
-         }
-      else
-         {
-         a_p = "PM";
-         }
-      if (curr_hour == 0)
-         {
-         curr_hour = 12;
-         }
-      if (curr_hour > 12)
-         {
-         curr_hour = curr_hour - 12;
-         }
+      a_p = curr_hour<12 ? "AM":"PM" ;
+
+      if (curr_hour == 0){curr_hour = 12;}
+      if (curr_hour > 12){curr_hour = curr_hour - 12;}
 
       var curr_min = d.getMinutes();
-      return (curr_hour + ":" + curr_min + " " + a_p);};
+      return (curr_hour + ":" + curr_min + " " + a_p);
+  };
 
-  var query = Replies.find({});
-
-  query.observeChanges({
+  Replies.find({}).observeChanges({
     added: function (id,post) {
       d = getHour(new Date(post.date));
       editing.replaceRange(
-        d+" "+Meteor.user().username+"$: "+post.command+'\n'+
-        post.message+'\n', 
+        '\n'+d+" "+Meteor.user().username+"$: "+post.command+'\n'+
+        post.message, 
         {line: Infinity});
-    }});
+    }
+  });
   
   $(document).ready(function(){
     $('ul.tabs').tabs();
   });
-
-  editing.setCursor(editing.lineCount(), 0);
 
   this.editorPy = editorPy;
   this.editorR = editorR;

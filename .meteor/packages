@@ -21,7 +21,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 kadira:flow-router
 kadira:blaze-layout
-meteortoys:allthings
+#eteortoys:allthings
 
 perak:codemirror
 meteorhacks:npm
@@ -30,5 +30,4 @@ amplify
 useraccounts:materialize 
 accounts-password
 rolljee:writefile
-ostrio:meteor-root
 universe:modules

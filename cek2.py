@@ -22,8 +22,9 @@ class HelloRPC(object):
 		return s.getvalue()
 
     def rcom(self, path):
-    	out = r.source(path)
-        return out[0]
+    	with stdoutIO() as s:
+		    r.source(path)
+		return s.getvalue()
 
 s = zerorpc.Server(HelloRPC())
 s.bind("tcp://0.0.0.0:4242")

@@ -37,13 +37,22 @@ Meteor.methods({
     },
 
     'MakeEnv' : function(port){
-      Meteor.users.update({_id:this.userId}, {$set: {port: port}});
+      Meteor.call("MakePort",port);
       makePy(port);
+    },
+
+    'MakePort' : function(port){
+      Port.insert({user:this.userId,port: port});
+    },
+
+    'GetPort' : function(user){
+      port = Port.findOne({user:user});
+      return port.port;
     },
 
     'Run' : function(codePath,type){
       var zerorpc = Meteor.npmRequire("zerorpc");
-      var port = Meteor.users.findOne(this.userId).port;
+      var port = Meteor.call("GetPort",this.userId);
       var func = type == 'py' ? 'pycom' : 'rcom' ;
       var respon = "";
       var UserID = Meteor.userId();

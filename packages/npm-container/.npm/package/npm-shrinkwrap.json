@@ -1,18 +1,5 @@
 {
   "dependencies": {
-    "multiline": {
-      "version": "1.0.2",
-      "dependencies": {
-        "strip-indent": {
-          "version": "1.0.1",
-          "dependencies": {
-            "get-stdin": {
-              "version": "4.0.1"
-            }
-          }
-        }
-      }
-    },
     "zerorpc": {
       "version": "0.9.3",
       "dependencies": {

@@ -8,7 +8,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/UserHome', {
   name:'userhome',
   action() {
-    BlazeLayout.render("landing", {content: "editor"});
+    BlazeLayout.render("landing", {content: "verifyLogin"});
   }
 });
 

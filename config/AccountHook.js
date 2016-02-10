@@ -1,7 +1,7 @@
 if (Meteor.isServer){
     Meteor.methods({
         "portExists": function(ports){
-            return !!Meteor.users.findOne({port: ports});
+            return !!Port.findOne({port: ports});
         },
     });
 }
@@ -9,8 +9,17 @@ if (Meteor.isServer){
 mySubmitFunc = function(error, state){
   if (!error) {
     if (state === "signIn") {
-      Meteor.call('RunEnv', users.port);
+      var port;
+      Meteor.call("GetPort", Meteor.userId(), function(error, result){
+        if(error){
+          console.log(error.reason);
+          return;
+        }
+        port = result;
+        Meteor.call('RunEnv', port);
+      });
     }
+    
     if (state === "signUp") {
       var port = genRandomPort();
       Meteor.call('MakeEnv', port,function(err, data) {
@@ -23,12 +32,12 @@ mySubmitFunc = function(error, state){
 };
 
 function genRandomPort(){
-  var maximum = 4200;
-  var minimum = 4242;
+  var maximum = 4242;
+  var minimum = 4200;
   var randomPort = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
   Meteor.call("portExists", randomPort, function(err, portExists){
             if (portExists)
-                randomPort = genRandonPort();
+                randomPort = genRandomPort();
         });
   return randomPort;
 }
