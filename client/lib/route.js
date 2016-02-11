@@ -12,6 +12,15 @@ FlowRouter.route('/UserHome', {
   }
 });
 
+FlowRouter.route('/login', {
+  name:'login',
+  action() {
+    if(!Meteor.userId())
+      BlazeLayout.render("landing", {content: "login"});
+    else FlowRouter.go('userhome');
+  }
+});
+
 FlowRouter.notFound = {
     action: function() {
 		  BlazeLayout.render("landing", {content: "pagenotfound"});
@@ -19,7 +28,7 @@ FlowRouter.notFound = {
 };
 
 FlowRouter.route('/403', {
-  name:'userhome',
+  name:'forbidden',
   action() {
     BlazeLayout.render("landing", {content: "pageforbidden"});
   }

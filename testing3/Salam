@@ -1,0 +1,23 @@
+Salam
+
+Anggota
+
+Virtualisasi -> putty -> server udah ada, anak2 sering running R, akhirnya 22 nya kita combine  (ira)
+
+Cloud Computing -> AWS ,sipadu ->resource ga mampu, package kurang lengkap, (TGS)
+
+RPC -> metode (Maul)
+
+Virtual Env -> seolah olah punya environtment yang udah ada packagenya, jadi ga perlu ribet nyari2 package untuk ngoding, 1 stop shopping, virtual R dalam python yang divirtualisasikan melalui web (Nisu)
+
+R adalah bahasa yang 'katanya' packagenya lengkap , dan python adalah bahasa yang PACKAGE LENGKAP, daripada kita conflict, mendin keduanya kita combine, disanalah rpy2 hadir!! (Mukehelis)
+
+Zero RPC (Maul)
+
+NodeJS, Meteor, Codemirror (TGS)
+
+Demo -> Virtual (Ira , Nisu)
+1 benar2 bisa limit resource that virtualize -> memoruVirtual.py
+2 Running R yang ada di virtual env python yang ada divirtualkan lewat port khusus di web -> file regresi.py
+3 running script R yang var nya udah di inisiasi di python -> regresi.R
+4 showoff, running ggplot

@@ -45,5 +45,5 @@ class HelloRPC(object):
 		return s.getvalue()
 
 s = zerorpc.Server(HelloRPC())
-s.bind("tcp://0.0.0.0:4206")
+s.bind("tcp://0.0.0.0:4236")
 s.run()

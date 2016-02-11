@@ -14,8 +14,8 @@ stack = resource.RLIMIT_STACK
 
 softData, hardData = resource.getrlimit(rsrc)
 softStack, hardStack = resource.getrlimit(stack)
-resource.setrlimit(rsrc, (3388608, hardData))
-resource.setrlimit(stack, (16388608, hardStack))
+resource.setrlimit(rsrc, (2000000000, hardData))
+resource.setrlimit(stack, (3000000000, hardStack))
 
 
 @contextlib.contextmanager
@@ -33,17 +33,17 @@ class HelloRPC(object):
 			try:
 				execfile(path)
 			except Exception,e:
-				print e
+				return e
 		return s.getvalue()
 
 	def rcom(self, path):
 		with stdoutIO() as s:
 			try:
-				R_ENV.source(path)
+				out = R_ENV.source(path)
 			except Exception,e:
-				print e
+				return e
 		return s.getvalue()
 
 s = zerorpc.Server(HelloRPC())
-s.bind("tcp://0.0.0.0:4206")
+s.bind("tcp://0.0.0.0:4228")
 s.run()

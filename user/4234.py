@@ -5,7 +5,18 @@ import sys
 import StringIO
 import contextlib
 
-r = robjects.r
+R_ENV = robjects.r
+
+import resource
+
+rsrc = resource.RLIMIT_DATA
+stack = resource.RLIMIT_STACK
+
+softData, hardData = resource.getrlimit(rsrc)
+softStack, hardStack = resource.getrlimit(stack)
+resource.setrlimit(rsrc, (2000000000, hardData))
+resource.setrlimit(stack, (3000000000, hardStack))
+
 
 @contextlib.contextmanager
 def stdoutIO(stdout=None):
@@ -24,7 +35,7 @@ class HelloRPC(object):
 
 	def rcom(self, path):
 		with stdoutIO() as s:
-			out = r.source(path)
+			out = R_ENV.source(path)
 		return s.getvalue()
 
 s = zerorpc.Server(HelloRPC())

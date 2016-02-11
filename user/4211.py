@@ -5,7 +5,7 @@ import sys
 import StringIO
 import contextlib
 
-R_ENV = robjects.r
+r = robjects.r
 
 import resource
 
@@ -14,9 +14,18 @@ stack = resource.RLIMIT_STACK
 
 softData, hardData = resource.getrlimit(rsrc)
 softStack, hardStack = resource.getrlimit(stack)
-resource.setrlimit(rsrc, (3388608, hardData))
-resource.setrlimit(stack, (16388608, hardStack))
+resource.setrlimit(rsrc, (2048000000, hardData))
+resource.setrlimit(stack, (306000000, hardStack))
 
+for name, desc in [
+	("RLIMIT_CORE", "core file size"),
+	("RLIMIT_FSIZE", "file size"),
+	("RLIMIT_DATA", "heap size"),
+	("RLIMIT_STACK", "stack size")
+	]:
+	limit_num = getattr(resource, name)
+	soft, hard = resource.getrlimit(limit_num)
+	print "Maximum %-25s (%-15s) : %20s %20s" % (desc, name, soft, hard)
 
 @contextlib.contextmanager
 def stdoutIO(stdout=None):
@@ -30,20 +39,14 @@ def stdoutIO(stdout=None):
 class HelloRPC(object):
 	def pycom(self, path):
 		with stdoutIO() as s:
-			try:
-				execfile(path)
-			except Exception,e:
-				print e
+			execfile(path)
 		return s.getvalue()
 
 	def rcom(self, path):
 		with stdoutIO() as s:
-			try:
-				R_ENV.source(path)
-			except Exception,e:
-				print e
+			out = r.source(path)
 		return s.getvalue()
 
 s = zerorpc.Server(HelloRPC())
-s.bind("tcp://0.0.0.0:4206")
+s.bind("tcp://0.0.0.0:4211")
 s.run()

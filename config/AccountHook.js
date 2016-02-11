@@ -17,6 +17,7 @@ mySubmitFunc = function(error, state){
         }
         port = result;
         Meteor.call('RunEnv', port);
+        FlowRouter.go('userhome');
       });
     }
     
@@ -26,6 +27,7 @@ mySubmitFunc = function(error, state){
         if (err)
           console.log(err);
         Meteor.call('RunEnv', port);
+        FlowRouter.go('userhome');
       });
     }
   }

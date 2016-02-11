@@ -6,7 +6,18 @@ import sys\n\
 import StringIO\n\
 import contextlib\n\
 \n\
-r = robjects.r\n\
+R_ENV = robjects.r\n\
+\n\
+import resource\n\
+\n\
+rsrc = resource.RLIMIT_DATA\n\
+stack = resource.RLIMIT_STACK\n\
+\n\
+softData, hardData = resource.getrlimit(rsrc)\n\
+softStack, hardStack = resource.getrlimit(stack)\n\
+resource.setrlimit(rsrc, (3388608, hardData))\n\
+resource.setrlimit(stack, (16388608, hardStack))\n\
+\n\
 \n\
 @contextlib.contextmanager\n\
 def stdoutIO(stdout=None):\n\
@@ -20,12 +31,18 @@ def stdoutIO(stdout=None):\n\
 class HelloRPC(object):\n\
 	def pycom(self, path):\n\
 		with stdoutIO() as s:\n\
-			execfile(path)\n\
+			try:\n\
+				execfile(path)\n\
+			except Exception,e:\n\
+				print e\n\
 		return s.getvalue()\n\
 \n\
 	def rcom(self, path):\n\
 		with stdoutIO() as s:\n\
-			out = r.source(path)\n\
+			try:\n\
+				R_ENV.source(path)\n\
+			except Exception,e:\n\
+				print e\n\
 		return s.getvalue()\n\
 \n\
 s = zerorpc.Server(HelloRPC())\n\

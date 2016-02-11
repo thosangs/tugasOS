@@ -7,6 +7,17 @@ import contextlib
 
 r = robjects.r
 
+import resource
+
+rsrc = resource.RLIMIT_DATA
+stack = resource.RLIMIT_STACK
+
+softData, hardData = resource.getrlimit(rsrc)
+softStack, hardStack = resource.getrlimit(stack)
+resource.setrlimit(rsrc, (2000000000, hardData))
+resource.setrlimit(stack, (3000000000, hardStack))
+
+
 @contextlib.contextmanager
 def stdoutIO(stdout=None):
 	old = sys.stdout

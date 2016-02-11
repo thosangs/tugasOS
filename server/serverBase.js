@@ -18,7 +18,7 @@ Meteor.methods({
         Replies.insert({
           message: stdout ? stdout : stderr, 
           date: new Date(),
-          user: this.userId,
+          user: this.userId(),
           command: line
         }); 
       }).run();
